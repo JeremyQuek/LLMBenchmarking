@@ -2,22 +2,10 @@ from transformers import pipeline
 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
-ARTICLE = """ New York (CNN)When Liana Barrientos was 23 years old, she got married in Westchester County, New York.
-A year later, she got married again in Westchester County, but to a different man and without divorcing her first husband.
-Only 18 days after that marriage, she got hitched yet again. Then, Barrientos declared "I do" five more times, sometimes only within two weeks of each other.
-In 2010, she married once more, this time in the Bronx. In an application for a marriage license, she stated it was her "first and only" marriage.
-Barrientos, now 39, is facing two criminal counts of "offering a false instrument for filing in the first degree," referring to her false statements on the
-2010 marriage license application, according to court documents.
-Prosecutors said the marriages were part of an immigration scam.
-On Friday, she pleaded not guilty at State Supreme Court in the Bronx, according to her attorney, Christopher Wright, who declined to comment further.
-After leaving court, Barrientos was arrested and charged with theft of service and criminal trespass for allegedly sneaking into the New York subway through an emergency exit, said Detective
-Annette Markowski, a police spokeswoman. In total, Barrientos has been married 10 times, with nine of her marriages occurring between 1999 and 2002.
-All occurred either in Westchester County, Long Island, New Jersey or the Bronx. She is believed to still be married to four men, and at one time, she was married to eight men at once, prosecutors say.
-Prosecutors said the immigration scam involved some of her husbands, who filed for permanent residence status shortly after the marriages.
-Any divorces happened only after such filings were approved. It was unclear whether any of the men will be prosecuted.
-The case was referred to the Bronx District Attorney\'s Office by Immigration and Customs Enforcement and the Department of Homeland Security\'s
-Investigation Division. Seven of the men are from so-called "red-flagged" countries, including Egypt, Turkey, Georgia, Pakistan and Mali.
-Her eighth husband, Rashid Rajput, was deported in 2006 to his native Pakistan after an investigation by the Joint Terrorism Task Force.
-If convicted, Barrientos faces up to four years in prison.  Her next court appearance is scheduled for May 18.
+ARTICLE = """ After her husband's assassination and funeral in 1963, Kennedy and her children largely withdrew from public view. In 1968, she married Greek shipping magnate Aristotle Onassis, which caused controversy. Following Onassis's death in 1975, she had a career as a book editor in New York City, first at Viking Press and then at Doubleday, and worked to restore her public image. Even after her death, she ranks as one of the most popular and recognizable first ladies in American history, and in 1999, she was listed as one of Gallup's Most-Admired Men and Women of the 20th century.[5] She died in 1994 and was buried at Arlington National Cemetery alongside President Kennedy and two of their children, one stillborn and one who died shortly after birth.[6] Surveys of historians conducted periodically by the Siena College Research Institute since 1982 have consistently found Kennedy Onassis to rank among the most highly regarded first ladies by the assessments of historians.
 """
-print(summarizer(ARTICLE, max_length=130, min_length=30, do_sample=False))
+text = summarizer(ARTICLE, max_length=130, min_length=30, do_sample=False)
+
+for item in text:
+    for value in item.values():
+        print(value)
